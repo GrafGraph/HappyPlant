@@ -26,3 +26,6 @@ Dargestellt werden sollen die Informationen über ein übersichtliches Dashboard
 - Möglichst viel Gewinn erzielen 
 - Zufriedenheit der Kunden
 - Selbst Nutzen von der App haben 
+
+## Branch Flow
+![alt text](https://github.com/Maffotter/HappyPlant/blob/main/Documentation/BranchFlow.png "Branch FLow")
