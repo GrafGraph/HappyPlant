@@ -2,6 +2,7 @@ package com.fherfurt.HappyPlant.model;
 
 public class Plant {
 
+    private Integer id;
     private String name;
     private String status;
 
