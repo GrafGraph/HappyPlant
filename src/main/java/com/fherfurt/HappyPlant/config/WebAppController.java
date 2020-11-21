@@ -32,8 +32,7 @@ public class WebAppController {
 //    }
 
     @GetMapping("/")
-    public String greeting(Model model) {
-        model.addAttribute("name", "Plant");
+    public String greeting() {
         return "greeting";
     }
 }

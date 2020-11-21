@@ -10,8 +10,8 @@
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/> <!-- DB Driver -->
             <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost/~/happyplant"/>
-            <property name="javax.persistence.jdbc.user" value="misha"/> <!-- DB User -->
-            <property name="javax.persistence.jdbc.password" value=""/> <!-- DB Password -->
+            <property name="javax.persistence.jdbc.user" value="byoqgbjhbczizz"/> <!-- DB User -->
+            <property name="javax.persistence.jdbc.password" value="96da92da7ca2ae107793eceae8187967716f6f4be4e73b0bc879e7fdf6fe0328"/> <!-- DB Password -->
 
             <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/> <!-- DB Dialect -->
             <property name="hibernate.hbm2ddl.auto" value="update" /> <!-- create / create-drop / update -->
