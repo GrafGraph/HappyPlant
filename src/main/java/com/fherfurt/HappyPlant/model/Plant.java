@@ -1,5 +1,7 @@
 package com.fherfurt.HappyPlant.model;
 
+import com.sun.istack.NotNull;
+
 import javax.persistence.*;
 
 @Entity
@@ -9,7 +11,10 @@ public class Plant {
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private long id;
 
+    @NotNull
     private String name;
+
+    @NotNull
     private String status;
 
     public Plant(String name, String status) {
