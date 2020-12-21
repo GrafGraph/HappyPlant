@@ -45,7 +45,6 @@ in dem Dashboard für den Nutzer dargestellt werden. Dabei würde auch automatis
 Auf diesem System zur Datenbeschaffung soll unser System aufbauen, wobei die Festlegung des Grenzwertes auf der Website geschehen soll.
 
 ### Architektur
-TODO: Deploymentdiagramm aktualisieren und Text anpassen
 ![HappyPlant Deployment Diagramm](/Documentation/images/DeploymentDiagramm.png "HappyPlant Deployment Diagramm")
 
 Den Kern des Systems stellt der Heroku Server dar, auf dem die Java-Anwendung und die Domaindatenbank laufen, sowie die Website gehostet wird.
@@ -56,8 +55,6 @@ der Domaindatenbank und verknüpft diese mit den Sensordaten aus der Sensordaten
 Grafiktools, das als IFrame in das generierte HTML eingebunden wird, visualisiert.
 
 TODO: Architektur auf Sensorseite genauer beschreiben
-Die Erstellung weiterer Pflanzen/Töpfe bedarf daher eines getrennten Tools wie zB. NodeRed, wobei Töpfe mit Sensoren 
-ausgestattet und die erzeugten Daten als neues Objekt mit ID in die Datenbank geschrieben werden.
 
 ### Herausforderungen
 Durch den Einsatz von Sensorik fallen bereits einige Herausforderungen weg, wie zum Beispiel:
@@ -94,6 +91,8 @@ Balance gefunden werden? Es müssten schon bei der Wahl der Pflanzenarten, die m
 berücksichtigt und aufeinander abgestimmt werden. Die schlussendliche Entscheidung obliegt stets dem Nutzer.
 
 - TODO: Weitere Herausforderungen dokumentieren (zb Serverkosten)
+Die Erstellung weiterer Pflanzen/Töpfe bedarf daher eines getrennten Tools wie zB. NodeRed, wobei Töpfe mit Sensoren 
+ausgestattet und die erzeugten Daten als neues Objekt mit ID in die Sensordatenbank geschrieben werden.
 
 ### Umfang der Umsetzung des Prototyps
 Für die Umsetzung des Protoyps werden keine realen Sensordaten des MongoDB Servers verwendet, die uns von dem Entwickler des 
