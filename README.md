@@ -35,6 +35,7 @@ Der Feuchtigkeitswert bewegt sich dabei zwischen den Grenzen 0% (total trocken) 
 meist in einem verhältnismäßig kleinen Bereich. Zum Beispiel bei der getesteten Basilikumpflanze von Rewe zwischen ~32%, was gleichzeitig dem Grenzwert entspricht, 
 und maximal 50% Feuchtigkeit. Dabei fällt die Feuchtigkeit bei den zugrundeliegenden Testbedingungen um etwa 10% pro Tag. 
 Die Pflanze wird so also etwa alle zwei Tage gegossen.
+
 ![Sensorik des Pflanzentopfes](/Documentation/images/SensorikPflanzentopf.PNG "Sensorik des Pflanzentopfes")
 TODO: Bild vom Graphen einfügen und Text entsprechend anpassen!
 
@@ -44,8 +45,8 @@ in dem Dashboard für den Nutzer dargestellt werden. Dabei würde auch automatis
 Auf diesem System zur Datenbeschaffung soll unser System aufbauen, wobei die Festlegung des Grenzwertes auf der Website geschehen soll.
 
 ### Architektur
-TODO: Deploymentdiagramm einpflegen und Text anpassen
-![HappyPlant Deployment Diagramm](/Documentation/images/DeploymentDiagramm.png) "HappyPlant Deployment Diagramm")
+TODO: Deploymentdiagramm aktualisieren und Text anpassen
+![HappyPlant Deployment Diagramm](/Documentation/images/DeploymentDiagramm.png "HappyPlant Deployment Diagramm")
 
 Den Kern des Systems stellt der Heroku Server dar, auf dem die Java-Anwendung und die Domaindatenbank laufen, sowie die Website gehostet wird.
 Die Schnittstelle zwischen der Hardware des Pflanzentopfes und unserem System bildet die Sensordatenbank, die auf einem Cloud-Server 
@@ -160,4 +161,4 @@ TODO: Projektrahmen - Bachelor IT-Projekt einfügen
 ### Entwicklungsmanifest
 TODO: Manifest schreiben
 ### Branch Flow
-![alt text](https://github.com/Maffotter/HappyPlant/blob/main/Documentation/BranchFlow.png "Branch FLow")
+![Branch FLow](/Documentation/images/BranchFlow.png "Branch FLow")
