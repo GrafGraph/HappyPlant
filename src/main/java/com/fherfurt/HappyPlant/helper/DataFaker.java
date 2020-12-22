@@ -8,10 +8,10 @@ import java.util.Vector;
 
 /*
 Class used to generate test data for plants which is formatted like real sensordata.
-Uses the "when to water"-value of the given plant and creates a data history from now until a given time period (default 7 Days = 168h)
+Uses the wateringBorder of the given plant and creates a data history from now until a given time period (default 7 Days = 168h)
  */
 public class DataFaker {
-    private static final int DEFAULT_BACKTRACK_LENGTH = 168;        // In hours
+    public static final int DEFAULT_BACKTRACK_LENGTH = 168;        // 7 Days in hours
     private static final int HOURS_BETWEEN_WATERING = 72;           // Used to determine waterConsumption related to wateringVolume
     private static final double STARTING_MOISTURE_RANGE_MIN = 10;   // starting % above wateringBorder
     private static final double STARTING_MOISTURE_RANGE = 15;       // Range above start
@@ -21,7 +21,7 @@ public class DataFaker {
 
     // Creates a new set of SensorData
     public Vector<SensorData> createSensorDataHistory(int backTrackLength, double wateringBorder) {
-        Vector<SensorData> sensorDataVector = new Vector<SensorData>();     // Result DataSets
+        Vector<SensorData> sensorDataVector = new Vector<>();     // Result DataSets
         LocalDateTime timestamp = LocalDateTime.now();
         Random random = new Random();
         double moisture = (STARTING_MOISTURE_RANGE_MIN + wateringBorder) +

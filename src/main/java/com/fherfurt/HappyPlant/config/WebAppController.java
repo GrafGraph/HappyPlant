@@ -1,6 +1,8 @@
 package com.fherfurt.HappyPlant.config;
 
+import com.fherfurt.HappyPlant.helper.DataFaker;
 import com.fherfurt.HappyPlant.model.Plant;
+import com.fherfurt.HappyPlant.model.SensorData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Vector;
 
 @Controller
 public class WebAppController {
@@ -34,5 +37,13 @@ public class WebAppController {
     @GetMapping("/")
     public String greeting() {
         return "greeting";
+    }
+
+    @GetMapping("/dataFaker")
+    public String dataFaker(Model model) {
+        // Hardcoded wateringBorder of 32 for testing purposes. TODO: change to GET Parameter?
+        Vector<SensorData> sensorDataVector = new DataFaker().createSensorDataHistory(DataFaker.DEFAULT_BACKTRACK_LENGTH,32);
+        model.addAttribute("sensorDataVector", sensorDataVector);
+        return "dataFaker";
     }
 }
