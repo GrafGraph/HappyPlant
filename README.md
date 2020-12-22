@@ -156,8 +156,8 @@ gegossen hat.
 - Selbst Nutzen von der App haben 
 
 ## Projektrahmen
-TODO: Projektrahmen - Bachelor IT-Projekt einfügen
-(Prüfer, Thema, Rahmen(Modul), Deadline)
+HappyPlant entsteht im Rahmen des Bachelor-IT-Projekts von Anton Bespalov und Michael Hopp.
+Abgegeben wird es bis zum 28.02.2021 beim Prüfer Prof. Avemarg
 
 ### Entwicklungsmanifest
 #### Allgemein
