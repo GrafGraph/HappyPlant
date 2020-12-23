@@ -15,9 +15,9 @@ public class Plant {
     private String name;
 
     @NotNull
-    private String status;
+    private PlantStatus status;                  // TODO: to enum
 
-    public Plant(String name, String status) {
+    public Plant(String name, PlantStatus status) {
         this.name = name;
         this.status = status;
     }
@@ -38,11 +38,11 @@ public class Plant {
         this.name = name;
     }
 
-    public String getStatus() {
+    public PlantStatus getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(PlantStatus status) {
         this.status = status;
     }
 
@@ -52,5 +52,21 @@ public class Plant {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    // If the plant is thirsty then true
+    public boolean isThirsty(Plant plant)
+    {
+        boolean isThirsty;
+        PlantStatus status = plant.getStatus();
+        if(status == PlantStatus.THIRSTY)
+        {
+            isThirsty = true;
+        }
+        else
+        {
+            isThirsty = false;
+        }
+        return isThirsty;
     }
 }
