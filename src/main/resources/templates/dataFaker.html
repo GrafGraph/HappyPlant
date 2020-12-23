@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Fake Data Hurray</h1>
+<table style="width:100%">
+    <tr>
+        <th>Timestamp</th>
+        <th>Moisture</th>
+    </tr>
+    <tr th:each="sensorData: ${sensorDataVector}">
+        <td th:text="${sensorData.getTimestamp()}"></td>
+        <td th:text="${sensorData.getMoisture()}"></td>
+    </tr>
+</table>
+</body>
+</html>

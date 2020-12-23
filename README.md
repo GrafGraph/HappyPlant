@@ -156,8 +156,34 @@ gegossen hat.
 - Selbst Nutzen von der App haben 
 
 ## Projektrahmen
-TODO: Projektrahmen - Bachelor IT-Projekt einfügen
+HappyPlant entsteht im Rahmen des Bachelor-IT-Projekts von Anton Bespalov und Michael Hopp.
+Abgegeben wird es bis zum 28.02.2021 beim Prüfer Prof. Avemarg
+
 ### Entwicklungsmanifest
-TODO: Manifest schreiben
-### Branch Flow
+#### Allgemein
+- Sprache des Projekts: Code und Code-Kommentare sind englisch, Projektdokumentation und -Management sind deutsch.
+- Kommunikation: Webex, Discord, Whatsapp, GitHub
+- GitHub-Projects Kanban wird zur Aufgabenübersicht und -Verteilung genutzt
+
+#### Software
+- GitHub als Versionskontrollsystem und für das Projektmanagement
+- Heroku Server für das Deployment (App, DB, Website)
+- Java Spring MVC (IDE: IntelliJ)
+- Wix.com für Design-Mockups
+- LucidChart für Diagramme
+- PostgreSQL für die Domaindatenbank
+
+#### Dokumentation
+- README
+- Code-Kommentare
+
+#### Branch Flow
 ![Branch FLow](/Documentation/images/BranchFlow.png "Branch FLow")
+##### Mergen:
+1. pull project
+2. merge Dev-Branch (remote) in your branch
+3. run the tests and check if the app has any problems
+4. push your branch
+5. checkout Dev-Branch (Remote)
+6. merge your branch in the Dev-Branch
+7. push Dev-Branch
