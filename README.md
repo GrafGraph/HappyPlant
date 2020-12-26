@@ -154,6 +154,13 @@ gegossen hat.
 - Möglichst viel Gewinn erzielen 
 - Zufriedenheit der Kunden
 - Selbst Nutzen von der App haben 
+## Nutzerakzeptanz:
+HappyPlant wird höchstwahrscheinlich anfangs sehr skeptisch betrachtet werden. Einige Nutzer könnten das Dashboard als 
+nutzlos einschätzen und es nicht nutzen. Viele altmodische und traditionelle Menschen werden es somit
+nicht Nutzen. Jedoch gibt es inzwischen modernere Generationen, die die selben Interessen verfolgen und deutlich 
+vertrauter mit der modernen Technik sind. Das Projekt wird wahrschienlich von Freunden des SmartHomes zuspruch erhalten. 
+Besonders der Aspekt, dass Leute heutzutage deutlich weniger Zeit haben, garantiert beinahe eine hohe Nutzerakzeptanz. 
+Die Nutzer des Dashboards müssen nicht mehr vor die Tür gehen um zu wissen ob ihre Pflanzen genug Wasser haben. 
 
 ## Projektrahmen
 HappyPlant entsteht im Rahmen des Bachelor-IT-Projekts von Anton Bespalov und Michael Hopp.
