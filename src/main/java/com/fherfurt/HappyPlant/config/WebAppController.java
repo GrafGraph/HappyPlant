@@ -2,6 +2,7 @@ package com.fherfurt.HappyPlant.config;
 
 import com.fherfurt.HappyPlant.helper.DataFaker;
 import com.fherfurt.HappyPlant.model.Plant;
+import com.fherfurt.HappyPlant.model.PlantStatus;
 import com.fherfurt.HappyPlant.model.SensorData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,7 +21,7 @@ public class WebAppController {
 
     @GetMapping("/plants")
     public String getAllPlants(Model model) {
-        Plant plant = new Plant("Willie", "Happy as a honeycake horse");
+        Plant plant = new Plant("Willie", PlantStatus.WATERED);
         model.addAttribute(plant);
 //        Iterable<Plant> plants = plantRepository.findAll();   TODO: Read and Write Plant objects into DB
         return "plants";
