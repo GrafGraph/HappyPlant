@@ -5,14 +5,13 @@ import com.fherfurt.HappyPlant.model.SensorDataEntry;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Random;
-import java.util.Vector;
 
 /*
 Class used to generate test data for plants which is formatted like real sensordata.
 Uses the wateringBorder of the given plant and creates a data history from now until a given time period (default 7 Days = 168h)
  */
 public class DataFaker {
-    public static final int DEFAULT_BACKTRACK_LENGTH = 168;        // 7 Days in hours
+    public static final int DEFAULT_BACKTRACK_LENGTH = 168;         // 7 Days in hours
     private static final int HOURS_BETWEEN_WATERING = 72;           // Used to determine waterConsumption related to wateringVolume
     private static final double STARTING_MOISTURE_RANGE_MIN = 10;   // starting % above wateringBorder
     private static final double STARTING_MOISTURE_RANGE = 15;       // Range above start
@@ -28,11 +27,12 @@ public class DataFaker {
         double moisture = (STARTING_MOISTURE_RANGE_MIN + wateringBorder) +
                 STARTING_MOISTURE_RANGE * random.nextDouble();
         double wateringVolume = moisture - wateringBorder;                  // Each watering shall increase the moisture by this difference
-        double waterConsumption = wateringVolume / HOURS_BETWEEN_WATERING;
+        double waterConsumption = wateringVolume / ((HOURS_BETWEEN_WATERING * 0.25) +
+                (HOURS_BETWEEN_WATERING * 2.0 - HOURS_BETWEEN_WATERING * 0.25) * random.nextDouble());  // Randomize the length of watering intervalls
 
         for (int i = 0; i < backTrackLength; i++)   // Each hour shall create a new Entry
         {
-            sensorData.add(new SensorDataEntry(timestamp.minusHours(backTrackLength + i), moisture));
+            sensorData.add(new SensorDataEntry(timestamp.minusHours(backTrackLength - i), moisture));
 
             if (moisture < wateringBorder)  // Needs watering
             {

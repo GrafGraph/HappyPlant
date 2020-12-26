@@ -8,12 +8,15 @@ import java.util.ArrayList;
 import java.util.Locale;
 
 public class SensorData {
-    private String label;       // Name for Chart
-    private ArrayList<SensorDataEntry> entries;
+    private String label;                           // Name for Chart
+    private ArrayList<SensorDataEntry> entries;     // Entries formatted similar to real sensordata
 
+    /*
+    Creates a SensorData object with defined testdata
+     */
     public SensorData() {
         this.label = "Moisture";
-        this.entries = new DataFaker().createSensorDataHistory(DataFaker.DEFAULT_BACKTRACK_LENGTH,32);  // TODO: Outsource the hardcoded wateringBorder
+        this.entries = new DataFaker().createSensorDataHistory(DataFaker.DEFAULT_BACKTRACK_LENGTH,32);  // Hint: Outsource the hardcoded wateringBorder
     }
 
     public SensorData(String label, ArrayList<SensorDataEntry> entries) {
@@ -39,9 +42,10 @@ public class SensorData {
     }
 
     public void setEntriesRandom() {
-        this.entries = new DataFaker().createSensorDataHistory(DataFaker.DEFAULT_BACKTRACK_LENGTH,32);  // TODO: Outsource the hardcoded wateringBorder
+        this.entries = new DataFaker().createSensorDataHistory(DataFaker.DEFAULT_BACKTRACK_LENGTH,32);  // Hint; Outsource the hardcoded wateringBorder
     }
 
+    // formats the timestamps stored in the entries as array of strings for use in Chart.js
     public String[] getTimestamps()
     {
         int size = this.entries.size();
@@ -55,6 +59,8 @@ public class SensorData {
         }
         return timestamps;
     }
+
+    // formats the moisture values stored in the entries as array of strings for use in Chart.js
     public String[] getMoistureValues()
     {
         int size = this.entries.size();

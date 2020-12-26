@@ -2,9 +2,12 @@ package com.fherfurt.HappyPlant.model;
 
 import java.time.LocalDateTime;
 
+/*
+Class which represents real entries of data from the sensordatabase
+ */
 public class SensorDataEntry {
-    // Not needed yet
-    // private String name;             // Identifier of Sensor for Plant/Pot
+
+    // private String name;             // Identifier of Sensor for Plant/Pot -> Not needed yet
 
     private LocalDateTime timestamp;    // Local is fine as long as there are no Timezones to consider (Fine for Testing)
     private double moisture;            // Measured by Sensor
