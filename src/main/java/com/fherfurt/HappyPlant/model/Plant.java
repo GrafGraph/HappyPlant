@@ -15,7 +15,7 @@ public class Plant {
     private String name;
 
     @NotNull
-    private PlantStatus status;                  // TODO: to enum
+    private PlantStatus status;
 
     public Plant(String name, PlantStatus status) {
         this.name = name;
