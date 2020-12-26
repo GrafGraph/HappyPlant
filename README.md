@@ -55,7 +55,7 @@ der Domaindatenbank und verknüpft diese mit den Sensordaten aus der Sensordaten
 Grafiktools, das als IFrame in das generierte HTML eingebunden wird, visualisiert.
 
 TODO: Architektur auf Sensorseite genauer beschreiben
-![HappyPlant Website Mockup](/Documentation/images/HappyPlantMockup.png "HappyPlant Website Mockup")
+![HappyPlant Website Mockup](/Documentation/images/HappyPlantMockup.PNG "HappyPlant Website Mockup")
 ### Herausforderungen
 Durch den Einsatz von Sensorik fallen bereits einige Herausforderungen weg, wie zum Beispiel:
 - Wie wird der Wasserverbrauch berechnet? Welche Faktoren können/sollen einbezogen werden?
