@@ -3,14 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <title>Greeting</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 </head>
 <body>
-    <div>
-        <p>Hello <a href="/plants">Plants</a>!</p>
-    </div>
-    <div>
-        <iframe src="https://datenmoni.de/d-solo/FPCkSm0Gz/patenpflanze?orgId=5&refresh=10s&from=1608373149873&to=1608373449873&panelId=2" width="450" height="200" frameborder="0">
-        </iframe>
-    </div>
+<div>
+    <p>Hello <a href="/plants">Plants</a>!</p>
+</div>
+
+<div style="position: relative; height:40vh; width:80vw">
+    <canvas id="moistureChart"></canvas>
+</div>
+
+<script th:inline="javascript">
+    var wateringBorderArray = new Array(/*[[${size}]]*/).fill(/*[[${wateringBorder}]]*/);
+    var ctx = document.getElementById('moistureChart').getContext('2d');
+    var chart = new Chart(ctx, {
+        // The type of chart we want to create
+        type: 'line',
+
+        // The data for our dataset
+        data: {
+            labels: /*[[${labels}]]*/,
+            datasets:
+            [{  label: 'Moisture',
+                borderColor: 'rgb(100, 149, 237)',
+                data: /*[[${moistureValues}]]*/
+            },
+            {   label: 'Watering Border',
+                borderColor: 'rgb(255,0,0)',
+                pointRadius: 0,
+                data: wateringBorderArray
+            }]
+        },
+
+        // Configuration options go here
+        options: {}
+    });
+</script>
 </body>
 </html>

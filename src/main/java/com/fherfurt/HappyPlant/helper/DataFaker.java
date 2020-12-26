@@ -1,8 +1,9 @@
 package com.fherfurt.HappyPlant.helper;
 
-import com.fherfurt.HappyPlant.model.SensorData;
+import com.fherfurt.HappyPlant.model.SensorDataEntry;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.Vector;
 
@@ -20,8 +21,8 @@ public class DataFaker {
     }
 
     // Creates a new set of SensorData
-    public Vector<SensorData> createSensorDataHistory(int backTrackLength, double wateringBorder) {
-        Vector<SensorData> sensorDataVector = new Vector<>();     // Result DataSets
+    public ArrayList<SensorDataEntry> createSensorDataHistory(int backTrackLength, double wateringBorder) {
+        ArrayList<SensorDataEntry> sensorData = new ArrayList<>();     // Result DataSets
         LocalDateTime timestamp = LocalDateTime.now();
         Random random = new Random();
         double moisture = (STARTING_MOISTURE_RANGE_MIN + wateringBorder) +
@@ -31,7 +32,7 @@ public class DataFaker {
 
         for (int i = 0; i < backTrackLength; i++)   // Each hour shall create a new Entry
         {
-            sensorDataVector.add(new SensorData(timestamp.minusHours(backTrackLength + i), moisture));
+            sensorData.add(new SensorDataEntry(timestamp.minusHours(backTrackLength + i), moisture));
 
             if (moisture < wateringBorder)  // Needs watering
             {
@@ -42,7 +43,7 @@ public class DataFaker {
             }
         }
 
-        return sensorDataVector;
+        return sensorData;
     }
 
     /*

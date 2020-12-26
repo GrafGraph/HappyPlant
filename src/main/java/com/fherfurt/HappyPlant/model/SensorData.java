@@ -1,32 +1,70 @@
 package com.fherfurt.HappyPlant.model;
 
-import java.time.LocalDateTime;
+import com.fherfurt.HappyPlant.helper.DataFaker;
+
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
+import java.util.ArrayList;
+import java.util.Locale;
 
 public class SensorData {
-    // Not needed yet
-    // private String name;             // Identifier of Sensor for Plant/Pot
+    private String label;       // Name for Chart
+    private ArrayList<SensorDataEntry> entries;
 
-    private LocalDateTime timestamp;    // Local is fine as long as there are no Timezones to consider (Fine for Testing)
-    private double moisture;            // Measured by Sensor
-
-    public SensorData(LocalDateTime timestamp, double moisture) {
-        this.timestamp = timestamp;
-        this.moisture = moisture;
+    public SensorData() {
+        this.label = "Moisture";
+        this.entries = new DataFaker().createSensorDataHistory(DataFaker.DEFAULT_BACKTRACK_LENGTH,32);  // TODO: Outsource the hardcoded wateringBorder
     }
 
-    public LocalDateTime getTimestamp() {
-        return timestamp;
+    public SensorData(String label, ArrayList<SensorDataEntry> entries) {
+        this.label = label;
+        this.entries = entries;
     }
 
-    public void setTimestamp(LocalDateTime timestamp) {
-        this.timestamp = timestamp;
+
+    public ArrayList<SensorDataEntry> getEntries() {
+        return entries;
     }
 
-    public double getMoisture() {
-        return moisture;
+    public void setEntries(ArrayList<SensorDataEntry> entries) {
+        this.entries = entries;
     }
 
-    public void setMoisture(double moisture) {
-        this.moisture = moisture;
+    public String getLabel() {
+        return label;
+    }
+
+    public void setLabel(String label) {
+        this.label = label;
+    }
+
+    public void setEntriesRandom() {
+        this.entries = new DataFaker().createSensorDataHistory(DataFaker.DEFAULT_BACKTRACK_LENGTH,32);  // TODO: Outsource the hardcoded wateringBorder
+    }
+
+    public String[] getTimestamps()
+    {
+        int size = this.entries.size();
+        String[] timestamps = new String[size];
+        ArrayList<SensorDataEntry> entries = this.entries;
+        // Format the Datetime to german standard: 24.12.20 13:37
+        DateTimeFormatter formatter = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.SHORT).withLocale(new Locale("de"));
+        for (int i = 0; i < size; i++)
+        {
+            timestamps[i] = entries.get(i).getTimestamp().format(formatter);
+        }
+        return timestamps;
+    }
+    public String[] getMoistureValues()
+    {
+        int size = this.entries.size();
+        String[] moistureValues = new String[size];
+        ArrayList<SensorDataEntry> entries = this.entries;
+
+        for (int i = 0; i < size; i++)
+        {
+            moistureValues[i] = String.valueOf(entries.get(i).getMoisture());
+        }
+        return moistureValues;
     }
 }

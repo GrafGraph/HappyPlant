@@ -11,9 +11,9 @@
         <th>Timestamp</th>
         <th>Moisture</th>
     </tr>
-    <tr th:each="sensorData: ${sensorDataVector}">
-        <td th:text="${sensorData.getTimestamp()}"></td>
-        <td th:text="${sensorData.getMoisture()}"></td>
+    <tr th:each="sensorDataEntry: ${sensorData}">
+        <td th:text="${sensorDataEntry.getTimestamp()}"></td>
+        <td th:text="${sensorDataEntry.getMoisture()}"></td>
     </tr>
 </table>
 </body>
