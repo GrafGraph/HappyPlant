@@ -4,19 +4,19 @@ Es sollen Verbrauchstatistiken und der aktuelle Feuchtigkeits-Status der Pflanze
 
 ## Prototyp
 ### Zielstellung
-Im Fokus steht - nach der Machbarkeitsstudie - die Klärung der Fragen zur Nutzerakzeptanz: Wie nützlich ist dieses System? 
+Im Fokus steht die Klärung der Fragen zur Nutzerakzeptanz: Wie nützlich ist dieses System? 
 Wie ist es ästhetisch und intuitiv darstellbar und welche Herausforderungen entstehen dabei?
-
-Deshalb liegt der Schwerpunkt vorerst in der Darstellung der Daten für den Nutzer: Dem Dashboard.
+Dazu soll die Darstellung der Daten für den Nutzer als Dashboard erprobt werden.
 
 Des Weiteren gilt es zu klären, wie sich die Datenbeschaffung der Pflanzen abspielen soll und wie dabei auf bestehende Systeme aufgebaut werden kann:
 Der Nutzer könnte jedes Detail manuell eintragen, jedoch wäre eine automatische Datenerfassung zugunsten der Bedienbarkeit eine enorme Entlastung.
-In Anlehnung an Idealen wie IoT und SmartHome soll diese Aufgabe von entsprechender Sensorik übernommen werden.
+In Anlehnung an Ideale wie IoT und SmartHome soll diese Aufgabe von entsprechender Sensorik übernommen werden.
 
-Außerdem soll eine mögliche Architektur für das System entworfen werden.
+Außerdem soll eine mögliche Architektur für das System entworfen werden, um nötige Systeme und deren Zusammenspiel zu skizzieren.
 
 ### Ausgangssituation
 Woher kommen die Pflanzendaten?
+
 Als Fundament soll ein automatisierter Pflanzentopf mit Sensoren zur Feuchtigkeitsmessung genutzt werden. 
 Dazu besprachen wir uns mit einem Entwickler, der anhand seines laufenden Projektes, den Prozess der Automatisierung und seine Ergebnisse beschrieb:
 
@@ -24,7 +24,7 @@ In primitivster Form beginnt solch eine Automatisierung durch Sensorik mit der A
 Bestimmung, anhand eines vorher festgelegten Grenzwertes, ob zusätzliche Feuchtigkeit hinzugefügt werden muss oder nicht
 (Boolean: Gießen ja oder nein?). 
 Fortgeschrittener werden die Daten (ID des Topfes, Zeitstempel, Feuchtigkeitswert, Grenzwert) dann in einem vordefinierten 
-Takt in eine Sensordatenbank (NoSQL (zB. MongoDB) reicht, weil es sich um dumme Daten handelt) gespeichert. Bei der Abfrage wird die Historie dann per Tool (zB. Grafana)
+Takt in eine Sensordatenbank (NoSQL - zB. MongoDB - reicht, weil es sich um dumme Daten handelt) gespeichert. Bei der Abfrage wird die Historie dann per Tool (zB. Grafana)
 als Graph inklusive des Grenzwertes visualisiert.
 Die Feuchtigkeit sinkt nur schwach und nach dem Gießen ist ein Sprung nach oben zu erkennen.
 Der Feuchtigkeitswert bewegt sich dabei zwischen den Grenzen 0% (total trocken) und 100% (fließend feucht),
@@ -32,12 +32,19 @@ meist in einem verhältnismäßig kleinen Bereich. Zum Beispiel bei der getestet
 und maximal 50% Feuchtigkeit. Dabei fällt die Feuchtigkeit bei den zugrundeliegenden Testbedingungen um etwa 10% pro Tag. 
 Die Pflanze wird so also etwa alle zwei Tage gegossen.
 
+Hardware der Sensorik:
 ![Sensorik des Pflanzentopfes](/Documentation/images/SensorikPflanzentopf.PNG "Sensorik des Pflanzentopfes")
+
+Beispiel eines kurzen Ausschnitts des Feuchtigkeitsgraphen der Basilikumpflanze:
+![Kurzer Basilikumgraph](/Documentation/images/DatenmoniGraph1.PNG "Kurzer Basilikumgraph")
+
+Beispiel eines realen Feuchtigkeitsgraphen über ein längeres Zeitfenster (Dabei handelt es sich nicht mehr um die Basiliumpflanze):
 ![Realer Feuchtigkeitsgraph](/Documentation/images/RealerFeuchtigkeitsgraph.jpeg "Realer Feuchtigkeitsgraph")
 
 Durch die Sensorik werden also die Feuchtigkeitswerte bestimmt und für die zeitliche Zuordnung mit einem Zeitstempel versehen. Zusätzlich erhält der Datensatz den Identifier der Pflanze bzw. des Topfes.
 Diese Datensätze können dann in eine Sensordatenbank geschrieben werden, aus der unser System liest und mithilfe eines Visualisierungstools
 in dem Dashboard für den Nutzer dargestellt werden. Dabei würde auch automatisch erkannt werden, wann der Nutzer zuletzt gegossen hat.
+
 Auf diesem System zur Datenbeschaffung soll unser System aufbauen, wobei die Festlegung des Grenzwertes auf der Website geschehen soll.
 
 ### Architektur
@@ -53,6 +60,15 @@ bedarf allerdings eines Servers und einer Lizenz. Für den Prototypen und auch e
 
 ### Design
 ![HappyPlant Website Mockup](/Documentation/images/HappyPlantMockup.PNG "HappyPlant Website Mockup")
+
+
+### Nutzerakzeptanz
+HappyPlant wird höchstwahrscheinlich anfangs sehr skeptisch betrachtet werden. Einige Nutzer könnten das Dashboard als 
+nutzlos einschätzen und es nicht nutzen. Viele altmodische und traditionelle Menschen werden es somit
+nicht Nutzen. Jedoch gibt es inzwischen modernere Generationen, die die selben Interessen verfolgen und deutlich 
+vertrauter mit der modernen Technik sind. Das Projekt wird wahrschienlich von Freunden des SmartHomes zuspruch erhalten. 
+Besonders der Aspekt, dass Leute heutzutage deutlich weniger Zeit haben, garantiert beinahe eine hohe Nutzerakzeptanz. 
+Die Nutzer des Dashboards müssen nicht mehr vor die Tür gehen um zu wissen ob ihre Pflanzen genug Wasser haben. 
 
 ### Herausforderungen
 Durch den Einsatz von Sensorik fallen bereits einige Herausforderungen weg, wie zum Beispiel:
@@ -74,7 +90,7 @@ Bedürfnissen leben? Wie erfolgt solch eine Gruppierung zu Beeten? Oder erhält 
 Sollten mehrere Sensoren pro Beet genutzt werden, könnten Mechanismen zur Gruppierung dieser in Einsatz treten: Zum Beispiel 
 Namenskonventionen bei den IDs der Sensoren, was im System eventuell dazu führt, dass für Analysen und Finden von Zusammenhängen 
 (verhältnismäßig aufwändige, unpraktische und fehleranfällige) Syntax-Analysen gebraucht würden. Dem Nutzer könnte das jedoch zur Zuordnung von Sensoren zu Pflanzen ausreichen. 
-Alternativ könnten entsprechende Datenstrukturen erzeugt und vom System verwaltet werden.
+Alternativ könnten entsprechende Datenstrukturen (In der Pflanzenklasse für die Domaindatenbank) erzeugt und vom System verwaltet werden.
 
 - Zur Gruppierung der Pflanzen zu Beete könnte im Formular zum Anlegen einer neuen Pflanze eine Option existieren, die beschreibt, dass es sich um 
 einen bereits verwendeten Topf handelt, wodurch eine Liste der IDs aller Töpfe angezeigt wird. Die unterschiedlichen Grenzwerte 
@@ -85,12 +101,12 @@ Pflanzenobjekt über einen individuellen Feuchtigkeits-Grenzwert verfügt, ab de
 aktuellen Feuchtigkeitswert des Topfes unterschiedliche Einschätzungen getroffen werden (und damit individuelle Statusmeldungen geschaltet werden), 
 weil eine Pflanze eventuell bereits durstig ist, während eine andere noch genug Wasser hat. Wie kann dabei eine sinnvolle 
 Balance gefunden werden? Es müssten schon bei der Wahl der Pflanzenarten, die miteinander getopft werden, deren Bedürfnisse 
-berücksichtigt und aufeinander abgestimmt werden. Die schlussendliche Entscheidung obliegt stets dem Nutzer.
+berücksichtigt und aufeinander abgestimmt werden. Die schlussendliche Entscheidung der Handlung obliegt stets dem Nutzer.
 
 
 Die Erstellung weiterer Pflanzen/Töpfe bedarf eines getrennten Tools wie zB. NodeRed, wobei Töpfe mit Sensoren 
 ausgestattet und die erzeugten Daten als neues Objekt mit ID in die Sensordatenbank geschrieben werden. 
-Es gilt zu erforschen, wie das auf der Website von HappyPlant zentralisiert werden könnte.
+Es gilt zu erforschen, wie das auf der Website von HappyPlant zentralisiert werden könnte...
 
 ### Umfang der Umsetzung des Prototyps
 Für die Umsetzung des Protoyps werden keine realen Sensordaten des MongoDB Servers verwendet, die uns von dem Entwickler des 
@@ -120,25 +136,25 @@ Für den Prototypen hätte ein klarer Testfall genügt, jedoch wurde durch den E
 Pflanzen zu simulieren (Jedes Neuladen entspricht einem einzigartigen Graphen!). Dabei wird ein Grenzwert, ab dem gegossen werden muss, übergeben und standardmäßig eine Historie über ein Zeitfenster von 7 Tagen konstruiert.
 Der durchschnittliche Wasserverbrauch orientiert sich so, dass die Pflanze ihre Reserven zwischen einem oder sechs Tagen aufbraucht und gegossen werden muss, allerdings verläuft
 dieser Verbrauch nicht geradlinig, denn je nach Gegebenheit des Umfelds (Sonnenlicht, Temperatur) verbraucht die Pflanze mal mehr oder mal weniger als den Normalwert.
-Der Feuchtigkeitsbereich in dem die Pflanze lebt geht von definierten 10% bis 25% über dem Grenzwert. Genau diese Ausgangsfeuchtigkeit wird beim Gießen wieder hergestellt.
+Der Feuchtigkeitsbereich in dem die Pflanze lebt reicht von definierten 10% bis 25% über dem Grenzwert. Genau diese Ausgangsfeuchtigkeit wird beim Gießen wieder hergestellt.
 Es ist unrealistisch, dass ein menschlicher Gärtner jedes mal exakt die selbe Menge gießt, aber in Anbetracht des Ziels der vollständigen Automatisierung des Pflanzentopfes,
 wird davon ausgegangen, dass die Wasserversorgung automatisiert stattfindet, wobei diese Regelmäßigkeit gegeben ist. 
 Deshalb wird auch sofort beim Unterschreiten des Grenzwertes gegossen.
-So sähe ein Graph aus, bei dem die Gießmenge variabel ist:
+So sähe jedoch ein Graph aus, bei dem die Gießmenge variabel ist:
 ![Feuchtigkeitsgraph mit variabler Gießmenge](/Documentation/images/IrregularWateringGraph.PNG "Feuchtigkeitsgraph mit variabler Gießmenge")
 
 Ein Gärtner wird auf normalem Wege den Status seiner Pflanzen etwa 1-6 mal pro Tag prüfen. Der Feuchtigkeitssensor im Pflanzentopf sendet seine Ergebnisse alle paar Sekunden.
 Für die Anzahl der Messwerte, die zu generieren sind, wird sich eher an der zugrundeliegenden Sensorik orientiert, jedoch ist ein so genaues Messen nicht notwendig.
 Daher fiel die Entscheidung auf stündliche Messergebnisse. Bei einem Zeitfenster von 7 Tagen entspricht dies 168 zu erzeugenden Messwerten.
-Dadurch ergibt sich bei einfachen mathematischen Operationen kaum Rechenaufwand (3ms inklusive Rendering): Das Programm leidet in diesem Rahmen also kaum unter Performanceproblemen.
+Dadurch ergibt sich bei einfachen mathematischen Operationen kaum Rechenaufwand (3ms inklusive Rendering des Graphen): Das Programm leidet in diesem Rahmen also kaum unter Performanceproblemen.
 Bei dieser Geschwindigkeit stellt es auch kein Problem dar, den kompletten Prozess bei jedem Neuladen zu wiederholen.
 
-Der DataFaker erzeugte ehemals einen Vector von SensorData(Messwert und Zeitstempel), allerdings musste dieser Ansatz für eine bessere Repräsentation
-der Realobjekte (Erweiterbarkeit und Wartbarkeit) und für verständlicheren Einsatz von Chart.js umgestellt werden. Da Chart.js die Daten als String-Arrays übergeben werden, bietet es sich an,
+Der DataFaker erzeugte ehemals einen Vector von SensorData (Messwert und Zeitstempel), allerdings musste dieser Ansatz für eine bessere Repräsentation
+der Realobjekte (Erweiterbarkeit und Wartbarkeit) und für den einfacheren Einsatz von Chart.js umgestellt werden. Da Chart.js die Daten als String-Arrays übergeben werden, bietet es sich an,
 statt Vector als Datentyp ArrayList zu verwenden. Die Umstellung lief problemlos, da beide Datenkonstrukte ähnlich arbeiten. Zusätzlich wird ein Label für die Datensätze der Sensoren
 benötigt (Feuchtigkeit, Sonnenlicht, ...). Deshalb wurde SensorData zu SensorDataEntry - einem Sensordateneintrag - umbenannt und eine neue Klasse SensorData erstellt,
 die eine ArrayList von Sensordateneinträgen sowie ein Label hält. Damit wurde die Erweiterbarkeit verbessert. Die Klasse SensorData erhielt ebenfalls die Methoden zur
-umformatierung der Sensordateneinträge zu getrennten String Arrays für den Gebrauch in Chart.js.
+umformatierung der Sensordateneinträge zu getrennten String Arrays für den Gebrauch in Chart.js, sodass diese Funktionalität im *Model* und nicht etwa im *Controller* liegt.
 
 ### Visualisierung der Sensordaten mit Chart.js
 Die Nutzung mächtiger Grafiktools wie Grafana ist anzustreben, übersteigt jedoch den Rahmen dieses Prototyps.
@@ -147,14 +163,15 @@ Chart.js ist dabei der wohl namhafteste Vertreter. Dabei handelt es sich um eine
 bereits ansehnliche Ergebnisse erzeugt werden können: Grundlegende Animationen, Legenden und eine sinnvolle Gruppierung der Achsen-Labels sind sofort aktiv.
 
 Per CDN Link eingebunden, kann dadurch ein HTML Canvas Element befüllt werden. Das Canvas Element selbst ist nicht *responsive* doch lässt sich durch das Containerelement 
-formatieren und an dessen Eigenschaften anpassen, sodass es *responsive* wird. Dem Script zu Erstellung des Graphen wird dann ein Typ (Line), die Labels der Achsen
+formatieren und an dessen Eigenschaften anpassen, sodass es *responsive* wird. Dem Script zur Erstellung des Graphen wird dann ein Typ (Line), die Labels der Achsen
 und die Datensätze **als String-Arrays**, sowie styling Optionen übergeben. Zur Übergabe der Variablen kann im Javascript auch Thymeleaf dereferenziert werden.
 
 Als Besonderheit stellte sich heraus, dass zur Erzeugung der horizontalen Linie des Grenzwertes ein genauso großes Array wie das der Messwerte übergeben werden musste,
 in dem immer derselbe Wert steht. Damit die Linie glatt ist, wurden die Punkte unsichtbar gemacht. Dadurch, dass die Grenzwerte pro Messwert dargestellt werden, 
-ergibt sich die Möglichkeit eine Anpassung des Grenzwertes darzustellen.
+ergibt sich die Möglichkeit eine Anpassung des Grenzwertes darzustellen, sollte er sich im Verlauf der Zeit ändern müssen.
 
 ### Anlegen einer neuen Pflanze
+Was könnte beim Anlegen einer neuen Pflanze interessant sein?
 #### Nutzereingaben
 Notwendig:
 - ID/Name des Topfes
@@ -169,32 +186,24 @@ Zukünftig interessant:
 - Nährstoffwerte (Sensor)
 - Wasserbedarf für Prognosen (Berechnet sich aus Historie und ggfs Wetterbericht(Standort) - Sensor)
 
-
 ## Stakeholder und deren Anforderungen: 
-### Nutzer:
-- Immer zugreifen können
--> muss Ausfallssicher sein, wenn Webiste ausfällt, dann können Pflanzen sterben 
-- Parameter der Pflanzen müssen korrekt sein 
--> Wenn Parameter nicht Korrekt sind, dann sterben die PFlanzen
-- Wollen Benachrichirgungen haben
--> Ohne Benachrichtigungen können die Pflanzen sterben, weil der Nutzer es nicht mitbekommt
-- Website muss Intuitiv sein
-- Schöne Ansicht, dem Auge muss es gefallen
-### Admin: 
-- Leichte wartbarkeit
--> Parameter für Pflanzen leicht anpassen können oder neue Pflanzen einfügen 
-### Inhaber: 
-- Möglichst viel Gewinn erzielen 
-- Zufriedenheit der Kunden
-- Selbst Nutzen von der App haben 
-## Nutzerakzeptanz:
-HappyPlant wird höchstwahrscheinlich anfangs sehr skeptisch betrachtet werden. Einige Nutzer könnten das Dashboard als 
-nutzlos einschätzen und es nicht nutzen. Viele altmodische und traditionelle Menschen werden es somit
-nicht Nutzen. Jedoch gibt es inzwischen modernere Generationen, die die selben Interessen verfolgen und deutlich 
-vertrauter mit der modernen Technik sind. Das Projekt wird wahrschienlich von Freunden des SmartHomes zuspruch erhalten. 
-Besonders der Aspekt, dass Leute heutzutage deutlich weniger Zeit haben, garantiert beinahe eine hohe Nutzerakzeptanz. 
-Die Nutzer des Dashboards müssen nicht mehr vor die Tür gehen um zu wissen ob ihre Pflanzen genug Wasser haben. 
-
+- Nutzer:
+    - Immer zugreifen können
+    -> muss Ausfallssicher sein, wenn Webiste ausfällt, dann können Pflanzen sterben 
+    - Parameter der Pflanzen müssen korrekt sein 
+    -> Wenn Parameter nicht Korrekt sind, dann sterben die PFlanzen
+    - Wollen Benachrichirgungen haben
+    -> Ohne Benachrichtigungen können die Pflanzen sterben, weil der Nutzer es nicht mitbekommt
+    - Website muss Intuitiv sein
+    - Schöne Ansicht, dem Auge muss es gefallen
+- Admin: 
+    - Leichte wartbarkeit
+    -> Parameter für Pflanzen leicht anpassen können oder neue Pflanzen einfügen 
+- Inhaber: 
+    - Möglichst viel Gewinn erzielen 
+    - Zufriedenheit der Kunden
+    - Selbst Nutzen von der App haben 
+    
 ## Projektrahmen
 HappyPlant entsteht im Rahmen des Bachelor-IT-Projekts von Anton Bespalov und Michael Hopp.
 Abgegeben wird es bis zum 28.02.2021 beim Prüfer Prof. Avemarg an der Fachhochschule Erfurt.
@@ -223,8 +232,12 @@ und die Nutzerakzeptanz zu erproben.
 - Code-Kommentare
 
 #### Branch Flow
+Auf dem *main*-Branch soll stets eine releasefähige Version laufen. Für Features und Fixes werden Branches abgespaltet, die nach
+erfolgreicher Implementierung wieder auf *main* zurückgeführt werden. Dabei ist darauf zu achten, dass die Differenz der Versionen
+durch regelmäßige Pulls nicht zu groß wird.
 ![Branch FLow](/Documentation/images/BranchFlow.png "Branch FLow")
-##### Mergen:
+
+##### HowTo-Branch-Mergen:
 1. pull project
 2. merge Dev-Branch (remote) in your branch
 3. run the tests and check if the app has any problems
