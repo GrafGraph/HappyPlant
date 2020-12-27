@@ -1,10 +1,6 @@
 # HappyPlant
-TODO: "Machbarkeitsstudie", Findungsphase und Entscheidung für Sensordaten beschreiben -> Forschungsauftrag/-Frage
-
 Happy Plant ist ein Prototyp für ein web-basiertes Überwachungs-Dashboard für vom Nutzer angelegte Pflanzen. 
 Es sollen Verbrauchstatistiken und der aktuelle Feuchtigkeits-Status der Pflanzen angezeigt werden.
-
-TODO: Inhaltsverzeichnis?
 
 ## Prototyp
 ### Zielstellung
@@ -37,7 +33,7 @@ und maximal 50% Feuchtigkeit. Dabei fällt die Feuchtigkeit bei den zugrundelieg
 Die Pflanze wird so also etwa alle zwei Tage gegossen.
 
 ![Sensorik des Pflanzentopfes](/Documentation/images/SensorikPflanzentopf.PNG "Sensorik des Pflanzentopfes")
-TODO: Bild vom Graphen einfügen und Text entsprechend anpassen!
+![Realer Feuchtigkeitsgraph](/Documentation/images/RealerFeuchtigkeitsgraph.jpeg "Realer Feuchtigkeitsgraph")
 
 Durch die Sensorik werden also die Feuchtigkeitswerte bestimmt und für die zeitliche Zuordnung mit einem Zeitstempel versehen. Zusätzlich erhält der Datensatz den Identifier der Pflanze bzw. des Topfes.
 Diese Datensätze können dann in eine Sensordatenbank geschrieben werden, aus der unser System liest und mithilfe eines Visualisierungstools
@@ -52,15 +48,16 @@ Die Schnittstelle zwischen der Hardware des Pflanzentopfes und unserem System bi
 läuft und mit den Daten des Feuchtigkeitssensors angereichert wird. Bei der Nutzerabfrage zum Status einer Pflanze lädt 
 die Java Anwendung - im Sinne von Polyglot Persistence - die Daten zu dem Pflanzenobjekt (Grenzwert, Gruppierung, o.Ä.) aus
 der Domaindatenbank und verknüpft diese mit den Sensordaten aus der Sensordatenbank. Diese Informationen werden dann mithilfe eines
-Grafiktools, das als IFrame in das generierte HTML eingebunden wird, visualisiert.
+Grafiktools, das als IFrame in das generierte HTML eingebunden wird, visualisiert. Ein Grafiktool wie Grafana bietet sich für das tatsächliche System an,
+bedarf allerdings eines Servers und einer Lizenz. Für den Prototypen und auch erste Versionen des Systems reicht es, die Daten mit zum Beispiel Chart.js zu visualisieren.
 
-TODO: Architektur auf Sensorseite genauer beschreiben
+### Design
 ![HappyPlant Website Mockup](/Documentation/images/HappyPlantMockup.PNG "HappyPlant Website Mockup")
+
 ### Herausforderungen
 Durch den Einsatz von Sensorik fallen bereits einige Herausforderungen weg, wie zum Beispiel:
 - Wie wird der Wasserverbrauch berechnet? Welche Faktoren können/sollen einbezogen werden?
 - Der enorme Aufwand der manuellen Datenerfassung durch den Nutzer und dessen Fehleranfälligkeit (Pflanzendaten, Wann wurde wieviel gegossen uvm.)
-- TODO: Weiter ausführen
 
 Jedoch ergeben sich unter Anderem auch neue Hürden:
 
@@ -90,28 +87,73 @@ weil eine Pflanze eventuell bereits durstig ist, während eine andere noch genug
 Balance gefunden werden? Es müssten schon bei der Wahl der Pflanzenarten, die miteinander getopft werden, deren Bedürfnisse 
 berücksichtigt und aufeinander abgestimmt werden. Die schlussendliche Entscheidung obliegt stets dem Nutzer.
 
-- TODO: Weitere Herausforderungen dokumentieren (zb Serverkosten)
-Die Erstellung weiterer Pflanzen/Töpfe bedarf daher eines getrennten Tools wie zB. NodeRed, wobei Töpfe mit Sensoren 
-ausgestattet und die erzeugten Daten als neues Objekt mit ID in die Sensordatenbank geschrieben werden.
+
+Die Erstellung weiterer Pflanzen/Töpfe bedarf eines getrennten Tools wie zB. NodeRed, wobei Töpfe mit Sensoren 
+ausgestattet und die erzeugten Daten als neues Objekt mit ID in die Sensordatenbank geschrieben werden. 
+Es gilt zu erforschen, wie das auf der Website von HappyPlant zentralisiert werden könnte.
 
 ### Umfang der Umsetzung des Prototyps
 Für die Umsetzung des Protoyps werden keine realen Sensordaten des MongoDB Servers verwendet, die uns von dem Entwickler des 
 automatisierten Pflanzentopfes zur verfügung gestellt werden, weil durch die Verknüpfung unserer Anwendung mit einer MongoDB, bei den Serveranbietern Heroku 
-oder auch Cloud-Server, für uns untragbare Serverkosten entstehen würden. Daher werden zur Veranschaulichung der Dashboard-Funktionalitäten Testdaten zur Laufzeit generiert.
+oder auch Cloud-Server, für uns untragbare Serverkosten entstehen würden. Daher werden zur Veranschaulichung der Dashboard-Funktionalitäten Testdaten zur Laufzeit generiert, 
+mit denen per Chart.js der Feuchtigkeitsgraph simuliert wird.
 Zur Speicherung des Pflanzenobjektes und des zugehörigen Grenzwertes wird keine Domaindatenbank erstellt, sondern ein fester vorgegebener Wert verwendet.
-Es können erstmal keine weiteren Pflanzen hinzugefügt werden, weil dazu auch neue Töpfe mit Sensoren erstellt werden müssten.
+Es können erstmal keine weiteren Pflanzen hinzugefügt werden, weil dazu auch sinngemäß neue Töpfe mit Sensoren erstellt werden müssten.
 Das Design und mögliche Funktionalitäten der Website werden angedeutet.
-
-Zuerst soll der *primitve* Ansatz mit einem einfachen Status Boolean verfolgt werden, bevor die grafische Darstellung folgt.
 
 ### Ausblick
 Der Umfang des Prototyps könnte folgendermaßen erweitert werden:
-- Visualisierung der Historie
+- Einstellungen der Graphen: Andere Zeitfenster anzeigen, Grenzwert anpassen (Verlauf des Grenzwertes darstellen, anstatt nur die Konstante zu heben?) o.ä.
 - Anbindung einer Domaindatenbank zur Speicherung des Grenzwertes jeder Pflanze und der möglichen Gruppierung (Beete verschiedener Pflanzen in einem Topf)
 - Tool zur Erstellung neuer Pflanzen/Töpfe einbinden, sodass der Nutzer nur noch ein Portal bedienen muss
 - Automatisierte Bewässerung
+- Weitere Sensoren einbinden: Sonnenlicht, Temperatur, Nährstoffe / Minerale (Paprikapflanzen benötigen zB. extra Kalzium, sonst bilden sich braune Stellen an den Früchten)
+
 
 ## Umsetzung
+### Generierung der Testdaten
+Ziel war es hierbei, Daten zu erzeugen, die im Sinn und Format den Echten aus der Sensordatenbank entsprechen:
+![Ausschnitt findAll statement](/Documentation/images/DatenFormatSensor.jpeg "Ausschnitt findAll statement")
+
+Um die Funktionalität der Erzeugung vom eigentlichen System zu trennen, wurde dafür die Helper Klasse DataFaker erstellt.
+Für den Prototypen hätte ein klarer Testfall genügt, jedoch wurde durch den Einsatz von Random-Bereichen die Möglichkeit geschaffen das Verhalten unterschiedlicher
+Pflanzen zu simulieren (Jedes Neuladen entspricht einem einzigartigen Graphen!). Dabei wird ein Grenzwert, ab dem gegossen werden muss, übergeben und standardmäßig eine Historie über ein Zeitfenster von 7 Tagen konstruiert.
+Der durchschnittliche Wasserverbrauch orientiert sich so, dass die Pflanze ihre Reserven zwischen einem oder sechs Tagen aufbraucht und gegossen werden muss, allerdings verläuft
+dieser Verbrauch nicht geradlinig, denn je nach Gegebenheit des Umfelds (Sonnenlicht, Temperatur) verbraucht die Pflanze mal mehr oder mal weniger als den Normalwert.
+Der Feuchtigkeitsbereich in dem die Pflanze lebt geht von definierten 10% bis 25% über dem Grenzwert. Genau diese Ausgangsfeuchtigkeit wird beim Gießen wieder hergestellt.
+Es ist unrealistisch, dass ein menschlicher Gärtner jedes mal exakt die selbe Menge gießt, aber in Anbetracht des Ziels der vollständigen Automatisierung des Pflanzentopfes,
+wird davon ausgegangen, dass die Wasserversorgung automatisiert stattfindet, wobei diese Regelmäßigkeit gegeben ist. 
+Deshalb wird auch sofort beim Unterschreiten des Grenzwertes gegossen.
+So sähe ein Graph aus, bei dem die Gießmenge variabel ist:
+![Feuchtigkeitsgraph mit variabler Gießmenge](/Documentation/images/IrregularWateringGraph.PNG "Feuchtigkeitsgraph mit variabler Gießmenge")
+
+Ein Gärtner wird auf normalem Wege den Status seiner Pflanzen etwa 1-6 mal pro Tag prüfen. Der Feuchtigkeitssensor im Pflanzentopf sendet seine Ergebnisse alle paar Sekunden.
+Für die Anzahl der Messwerte, die zu generieren sind, wird sich eher an der zugrundeliegenden Sensorik orientiert, jedoch ist ein so genaues Messen nicht notwendig.
+Daher fiel die Entscheidung auf stündliche Messergebnisse. Bei einem Zeitfenster von 7 Tagen entspricht dies 168 zu erzeugenden Messwerten.
+Dadurch ergibt sich bei einfachen mathematischen Operationen kaum Rechenaufwand (3ms inklusive Rendering): Das Programm leidet in diesem Rahmen also kaum unter Performanceproblemen.
+Bei dieser Geschwindigkeit stellt es auch kein Problem dar, den kompletten Prozess bei jedem Neuladen zu wiederholen.
+
+Der DataFaker erzeugte ehemals einen Vector von SensorData(Messwert und Zeitstempel), allerdings musste dieser Ansatz für eine bessere Repräsentation
+der Realobjekte (Erweiterbarkeit und Wartbarkeit) und für verständlicheren Einsatz von Chart.js umgestellt werden. Da Chart.js die Daten als String-Arrays übergeben werden, bietet es sich an,
+statt Vector als Datentyp ArrayList zu verwenden. Die Umstellung lief problemlos, da beide Datenkonstrukte ähnlich arbeiten. Zusätzlich wird ein Label für die Datensätze der Sensoren
+benötigt (Feuchtigkeit, Sonnenlicht, ...). Deshalb wurde SensorData zu SensorDataEntry - einem Sensordateneintrag - umbenannt und eine neue Klasse SensorData erstellt,
+die eine ArrayList von Sensordateneinträgen sowie ein Label hält. Damit wurde die Erweiterbarkeit verbessert. Die Klasse SensorData erhielt ebenfalls die Methoden zur
+umformatierung der Sensordateneinträge zu getrennten String Arrays für den Gebrauch in Chart.js.
+
+### Visualisierung der Sensordaten mit Chart.js
+Die Nutzung mächtiger Grafiktools wie Grafana ist anzustreben, übersteigt jedoch den Rahmen dieses Prototyps.
+Für kleinere Anwendungen, mit weniger Datenpunkten und geringeren Anforderungen, reicht das Javascript basierte Rendering zur Laufzeit aus.
+Chart.js ist dabei der wohl namhafteste Vertreter. Dabei handelt es sich um eine starke Bibliothek, durch die mit relativ einfachem Aufwand
+bereits ansehnliche Ergebnisse erzeugt werden können: Grundlegende Animationen, Legenden und eine sinnvolle Gruppierung der Achsen-Labels sind sofort aktiv.
+
+Per CDN Link eingebunden, kann dadurch ein HTML Canvas Element befüllt werden. Das Canvas Element selbst ist nicht *responsive* doch lässt sich durch das Containerelement 
+formatieren und an dessen Eigenschaften anpassen, sodass es *responsive* wird. Dem Script zu Erstellung des Graphen wird dann ein Typ (Line), die Labels der Achsen
+und die Datensätze **als String-Arrays**, sowie styling Optionen übergeben. Zur Übergabe der Variablen kann im Javascript auch Thymeleaf dereferenziert werden.
+
+Als Besonderheit stellte sich heraus, dass zur Erzeugung der horizontalen Linie des Grenzwertes ein genauso großes Array wie das der Messwerte übergeben werden musste,
+in dem immer derselbe Wert steht. Damit die Linie glatt ist, wurden die Punkte unsichtbar gemacht. Dadurch, dass die Grenzwerte pro Messwert dargestellt werden, 
+ergibt sich die Möglichkeit eine Anpassung des Grenzwertes darzustellen.
+
 ### Anlegen einer neuen Pflanze
 #### Nutzereingaben
 Notwendig:
@@ -127,15 +169,6 @@ Zukünftig interessant:
 - Nährstoffwerte (Sensor)
 - Wasserbedarf für Prognosen (Berechnet sich aus Historie und ggfs Wetterbericht(Standort) - Sensor)
 
-## Grobanforderungen HappyPlant
-# TODO: Überarbeiten
-Eine vordefinierte (generische) Pflanze soll vorhanden sein. 
-Daten zu dieser Pflanze liegen in einer Datenbank und werden über eine Website dargestellt.
-Zu erfassende Daten: Wasserbedarf, Sonneneinstrahlung/Standort (Enum für Verdunstung), Wasserversorgung. Zusätzlich wünschenswert: Nährstoffbedarf und -Versorgung.
-Dargestellt werden sollen die Informationen über ein übersichtliches Dashboard, sodass alles auf einen Blick ersichtlich ist. Sollten weitere Pflanzen hinzukommen, sollen Kategorien/Gruppen von Pflanzen zusammengezogen werden. Es soll ein allgemeiner Gesundheitsstatus (Enum) gezeigt werden, sowie die voraussichtliche Zeit, bis die Pflanze wieder gewässert werden muss.
-
-Der Nutzer kann dem System mitteilen, wenn er seine Pflanzen
-gegossen hat.
 
 ## Stakeholder und deren Anforderungen: 
 ### Nutzer:
@@ -164,7 +197,12 @@ Die Nutzer des Dashboards müssen nicht mehr vor die Tür gehen um zu wissen ob 
 
 ## Projektrahmen
 HappyPlant entsteht im Rahmen des Bachelor-IT-Projekts von Anton Bespalov und Michael Hopp.
-Abgegeben wird es bis zum 28.02.2021 beim Prüfer Prof. Avemarg
+Abgegeben wird es bis zum 28.02.2021 beim Prüfer Prof. Avemarg an der Fachhochschule Erfurt.
+Der geplante Zeitaufwand für die Prüfungsleistung beträgt pro Prüfling 75 Stunden (3CP).
+
+Der Projektauftrag teilt sich zum einen in die Klärung der Forschungsfragen: Entwurf einer Architektur, Aufbau auf und Umgang mit Sensordaten (Testdatenerzeugung)
+sowie das Aufzeigen von Möglichkeiten und Herausforderungen des Systems. Zum anderen soll das System als Website greifbar gemacht werden, um die Funktionalitäten
+und die Nutzerakzeptanz zu erproben.
 
 ### Entwicklungsmanifest
 #### Allgemein
@@ -175,10 +213,10 @@ Abgegeben wird es bis zum 28.02.2021 beim Prüfer Prof. Avemarg
 #### Software
 - GitHub als Versionskontrollsystem und für das Projektmanagement
 - Heroku Server für das Deployment (App, DB, Website)
-- Java Spring MVC (IDE: IntelliJ)
+- Java Spring MVC (IDE: IntelliJ IDEA)
 - Wix.com für Design-Mockups
 - LucidChart für Diagramme
-- PostgreSQL für die Domaindatenbank
+- (PostgreSQL für die Domaindatenbank)
 
 #### Dokumentation
 - README
