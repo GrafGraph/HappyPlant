@@ -21,23 +21,23 @@ public class DataFaker {
 
     // Creates a new set of SensorData
     public ArrayList<SensorDataEntry> createSensorDataHistory(int backTrackLength, double wateringBorder) {
-        ArrayList<SensorDataEntry> sensorData = new ArrayList<>();     // Result DataSets
+        ArrayList<SensorDataEntry> sensorData = new ArrayList<>();     // Resulting DataSets
         LocalDateTime timestamp = LocalDateTime.now();
         Random random = new Random();
         double moisture = (STARTING_MOISTURE_RANGE_MIN + wateringBorder) +
                 STARTING_MOISTURE_RANGE * random.nextDouble();
-        double wateringVolume = moisture - wateringBorder;                  // Each watering shall increase the moisture by this difference
+        double wateringVolume = moisture - wateringBorder;                  // Each watering shall increase the moisture by this difference -> Resets the moisture to starting-value
         double waterConsumption = wateringVolume / ((HOURS_BETWEEN_WATERING * 0.25) +
                 (HOURS_BETWEEN_WATERING * 2.0 - HOURS_BETWEEN_WATERING * 0.25) * random.nextDouble());  // Randomize the length of watering intervalls
 
-        for (int i = 0; i < backTrackLength; i++)   // Each hour shall create a new Entry
+        for (int i = 0; i < backTrackLength; i++)   // Each hour shall create a new Entry starting from the furthest day to "now"
         {
             sensorData.add(new SensorDataEntry(timestamp.minusHours(backTrackLength - i), moisture));
 
             if (moisture < wateringBorder)  // Needs watering
             {
                 moisture += wateringVolume;
-            } else                          // Consumes water between 0.5 or 1.5 times of the normal waterConsumption
+            } else                          // Consumes water between 0.5 or 1.5 times of the normal waterConsumption to represent different conditions (temperature, sunlight,...)
             {
                 moisture -= (waterConsumption * 0.5) + (waterConsumption * 1.5 - waterConsumption * 0.5) * random.nextDouble();
             }

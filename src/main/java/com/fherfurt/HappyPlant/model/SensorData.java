@@ -7,6 +7,9 @@ import java.time.format.FormatStyle;
 import java.util.ArrayList;
 import java.util.Locale;
 
+/*
+Class which represents a table of sensordata in the sensordatabase. Holds methods to format the data to fit the needs of the visualizationtool
+ */
 public class SensorData {
     private String label;                           // Name for Chart
     private ArrayList<SensorDataEntry> entries;     // Entries formatted similar to real sensordata
