@@ -1,5 +1,5 @@
 # HappyPlant
-Happy Plant ist ein Prototyp für ein web-basiertes Überwachungs-Dashboard für vom Nutzer angelegte Pflanzen. 
+HappyPlant ist ein Prototyp für ein web-basiertes Überwachungs-Dashboard für vom Nutzer angelegte Pflanzen. 
 Es sollen Verbrauchstatistiken und der aktuelle Feuchtigkeits-Status der Pflanzen angezeigt werden.
 
 ## Prototyp
@@ -33,12 +33,15 @@ und maximal 50% Feuchtigkeit. Dabei fällt die Feuchtigkeit bei den zugrundelieg
 Die Pflanze wird so also etwa alle zwei Tage gegossen.
 
 Hardware der Sensorik:
+
 ![Sensorik des Pflanzentopfes](/Documentation/images/SensorikPflanzentopf.PNG "Sensorik des Pflanzentopfes")
 
 Beispiel eines kurzen Ausschnitts des Feuchtigkeitsgraphen der Basilikumpflanze:
+
 ![Kurzer Basilikumgraph](/Documentation/images/DatenmoniGraph1.PNG "Kurzer Basilikumgraph")
 
 Beispiel eines realen Feuchtigkeitsgraphen über ein längeres Zeitfenster (Dabei handelt es sich nicht mehr um die Basiliumpflanze):
+
 ![Realer Feuchtigkeitsgraph](/Documentation/images/RealerFeuchtigkeitsgraph.jpeg "Realer Feuchtigkeitsgraph")
 
 Durch die Sensorik werden also die Feuchtigkeitswerte bestimmt und für die zeitliche Zuordnung mit einem Zeitstempel versehen. Zusätzlich erhält der Datensatz den Identifier der Pflanze bzw. des Topfes.
