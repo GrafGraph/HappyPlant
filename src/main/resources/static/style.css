@@ -1,0 +1,82 @@
+.button {
+    border: none;
+    color: black;
+    padding: 15px 32px;
+    margin: 4px 2px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 20px;
+    width: 90%;
+}
+
+.div1 {
+    position: relative;
+    height: 25vh;
+    width: 40vw;
+    border: #666666;
+    background: rgb(239, 239, 239);
+    box-sizing: border-box;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin: 4px 2px;
+}
+
+.div2 {
+    width: 350px;
+    margin: 4px 2px;
+    padding: 10px;
+}
+
+.div4 {
+    position: relative;
+    height: 25vh;
+    width: 20vw;
+    border: #666666;
+    background: rgb(239, 239, 239);
+    box-sizing: border-box;
+    border-radius: 20px;
+    margin: 4px 2px;
+    display: flex;
+    padding: 10px;
+}
+
+.div3 {
+    position: relative;
+    height:45vh;
+    width:60vw;
+    border: #666666;
+    background: rgb(239, 239, 239);
+    box-sizing: border-box;
+    border-radius: 20px;
+    margin: 4px 2px;
+    display: flex;
+    padding: 10px;
+}
+
+.container {
+    display: flex;
+}
+
+.sectionButtons {
+}
+
+.sectionInfo {
+}
+.container1{
+    display: grid;
+}
+body {
+    font-family: Verdana, "Lucida Sans Unicode", sans-serif }
+img {
+    width: 35vw;
+    height: 18vh;
+}
+html {
+    position: relative;
+    min-height: 100%;
+}
+h3{
+    margin-top: 1vh;
+}

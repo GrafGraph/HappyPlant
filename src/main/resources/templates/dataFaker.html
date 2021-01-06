@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
+<header th:replace="fragments/header :: header">
+</header>
 <body>
 <h1>Fake Data Hurray</h1>
 <table style="width:100%">
@@ -16,5 +18,7 @@
         <td th:text="${sensorDataEntry.getMoisture()}"></td>
     </tr>
 </table>
+<footer th:replace="fragments/footer :: footer">
+</footer>
 </body>
 </html>

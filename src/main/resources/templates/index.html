@@ -4,16 +4,45 @@
     <meta charset="UTF-8">
     <title>Dashboard HappyPlant</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
-<div>
-    <p>Hello <a href="/plants">Plants</a>!</p>
-</div>
-
-<div style="position: relative; height:40vh; width:80vw">
-    <canvas id="moistureChart"></canvas>
-</div>
-
+<header th:replace="fragments/header :: header">
+</header>
+<body style="margin: 0px">
+<section class="container">
+    <section class="sectionButtons">
+        <div class="div2">
+            <button class="button">Add new Plant</button>
+            <button class="button" th:utext="'Plant 2: '+${name}" style="background: gray"></button>
+            <button class="button">Plant 2: Tomato</button>
+        </div>
+    </section>
+    <section class="sectionInfo">
+        <section class="container">
+            <div class="div4">
+                <section class="container1">
+                    <h3 style="font-weight: bold">Plantstatus</h3>
+                    <p class="card-text" th:utext="'Your '+${name} + ' is '+${status}"></p>
+                </section>
+            </div>
+            <div class="div1">
+                <section class="container1">
+                    <h3 style="font-weight: bold">Solar Activity</h3>
+                    <img src="https://wiki.bildungsserver.de/klimawandel/upload/Solar_temp_1000.jpg"
+                         alt="Sonnenaktivitätsdiagramm">
+                </section>
+            </div>
+        </section>
+        <div class="div3">
+            <section class="container1">
+                <h3 style="font-weight: bold">Moisture</h3>
+                <canvas id="moistureChart" style="width: 55vw; height: 38vh"></canvas>
+            </section>
+        </div>
+    </section>
+</section>
+<footer th:replace="fragments/footer :: footer">
+</footer>
 <script th:inline="javascript">
     var wateringBorderArray = new Array(/*[[${size}]]*/).fill(/*[[${wateringBorder}]]*/);
     var ctx = document.getElementById('moistureChart').getContext('2d');
@@ -25,15 +54,17 @@
         data: {
             labels: /*[[${labels}]]*/,
             datasets:
-            [{  label: 'Moisture',
-                borderColor: 'rgb(100, 149, 237)',
-                data: /*[[${moistureValues}]]*/
-            },
-            {   label: 'Watering Border',
-                borderColor: 'rgb(255,0,0)',
-                pointRadius: 0,
-                data: wateringBorderArray
-            }]
+                [{
+                    label: 'Moisture',
+                    borderColor: 'rgb(100, 149, 237)',
+                    data: /*[[${moistureValues}]]*/
+                },
+                    {
+                        label: 'Watering Border',
+                        borderColor: 'rgb(255,0,0)',
+                        pointRadius: 0,
+                        data: wateringBorderArray
+                    }]
         },
 
         // Configuration options go here

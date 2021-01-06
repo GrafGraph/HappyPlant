@@ -3,6 +3,7 @@ package com.fherfurt.HappyPlant.model;
 import com.sun.istack.NotNull;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 
 @Entity
 public class Plant {
@@ -17,11 +18,14 @@ public class Plant {
     @NotNull
     private PlantStatus status;
 
-    public Plant(String name, PlantStatus status) {
+    @NotNull
+    private double wateringBorder;
+
+    public Plant(String name, PlantStatus status, double wateringBorder) {
         this.name = name;
         this.status = status;
+        this.wateringBorder = wateringBorder;
     }
-
     // Constructor without Parameters for JPA.
     public Plant() {
     }
@@ -42,6 +46,10 @@ public class Plant {
         return status;
     }
 
+    public double getWateringBorder() {
+        return wateringBorder;
+    }
+
     public void setStatus(PlantStatus status) {
         this.status = status;
     }
@@ -54,19 +62,17 @@ public class Plant {
         this.id = id;
     }
 
-    // If the plant is thirsty then true
-    public boolean isThirsty(Plant plant)
-    {
-        boolean isThirsty;
-        PlantStatus status = plant.getStatus();
-        if(status == PlantStatus.THIRSTY)
+    public void setWateringBorder(double wateringBorder) {
+        this.wateringBorder = wateringBorder;
+    }
+
+    public void isPlantThirsty(Plant plant, SensorData data){
+        ArrayList<SensorDataEntry> SensorData =  data.getEntries();
+
+        SensorDataEntry lastSensorData = SensorData.get(SensorData.size() - 1);
+        if(lastSensorData.getMoisture() <= 32)
         {
-            isThirsty = true;
-        }
-        else
-        {
-            isThirsty = false;
-        }
-        return isThirsty;
+            plant.setStatus(PlantStatus.THIRSTY);
+        };
     }
 }
