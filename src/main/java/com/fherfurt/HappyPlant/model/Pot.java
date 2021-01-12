@@ -15,7 +15,7 @@ public class Pot {
     private long id;
 
     @NotNull
-    private double volume; // Gibt es einen besseren Datentyp dafür?
+    private double volume;
 
     @NotNull
     private String material;

@@ -62,7 +62,16 @@ Grafiktools, das als IFrame in das generierte HTML eingebunden wird, visualisier
 bedarf allerdings eines Servers und einer Lizenz. Für den Prototypen und auch erste Versionen des Systems reicht es, die Daten mit zum Beispiel Chart.js zu visualisieren.
 
 ### Design
+Das folgende Screenshot zeigt die ersten Designideen für die Website HappyPlant an. Die Daten zu den Pflanzen stehen im Vordergrund
+und an der Seite werden die einzelnen Pflanzen angezeigt. 
+
 ![HappyPlant Website Mockup](/Documentation/images/HappyPlantMockup.PNG "HappyPlant Website Mockup")
+
+Der Prototyp wurde anhand dieser Designidee entwickelt. Die Farbe des Headers wurde geändert, damit ein lebhafterer und freundlicher 
+Eindruck geschaffen wird:
+
+![HappyPlant Website](/Documentation/images/Prototype.PNG "HappyPlant Website")
+
 ### Weiterentwicklung des Prototypen
 Da dies erst ein Prototyp ist, sind auf der Website momentan nicht viele Funktionen vorhanden. Zu den nächsten Schritten 
 gehört die Implementierung der Funktionen. Unter anderem müssen die Funktionen der einzelnen Buttons implementiert werden

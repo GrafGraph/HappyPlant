@@ -66,6 +66,7 @@ public class Plant {
         this.wateringBorder = wateringBorder;
     }
 
+    // Changes Plantstatus if the plant is thirsty
     public void isPlantThirsty(Plant plant, SensorData data){
         ArrayList<SensorDataEntry> SensorData =  data.getEntries();
 
