@@ -1,7 +1,8 @@
 # HappyPlant
 HappyPlant ist ein Prototyp für ein web-basiertes Überwachungs-Dashboard für vom Nutzer angelegte Pflanzen. 
-Es sollen Verbrauchstatistiken und der aktuelle Feuchtigkeits-Status der Pflanzen angezeigt werden.
-[HappyPlant](https://happyplant1.herokuapp.com/)
+Es sollen Verbrauchstatistiken und der aktuelle Feuchtigkeits-Status der Pflanzen angezeigt werden. 
+
+Zur Website: [HappyPlant](https://happyplant1.herokuapp.com/)
 
 ## Prototyp
 ### Zielstellung
