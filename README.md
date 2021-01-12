@@ -72,6 +72,11 @@ Eindruck geschaffen wird:
 
 ![HappyPlant Website](/Documentation/images/Prototype.PNG "HappyPlant Website")
 
+Bei dem Entwickeln der Website sind Herausforderungen, bezüglich des Moisture Diagrammes, entstanden. Das Moisture Diagramm 
+hat sich komisch verhalten, unter anderem wurden die Größen unterschiedlich verändert. Dadurch entstand das Problem, dass 
+das Moisture Diagramm bei einigen Größen von dem Browserfenster nicht gut aussieht. Es kann passieren, dass entweder das Moisture Diagramm 
+aus der Box herausragt oder es zu klein für die Box wird. 
+
 ### Weiterentwicklung des Prototypen
 Da dies erst ein Prototyp ist, sind auf der Website momentan nicht viele Funktionen vorhanden. Zu den nächsten Schritten 
 gehört die Implementierung der Funktionen. Unter anderem müssen die Funktionen der einzelnen Buttons implementiert werden
@@ -93,8 +98,6 @@ Die Nutzer des Dashboards müssen nicht mehr vor die Tür gehen um zu wissen ob 
 Durch den Einsatz von Sensorik fallen bereits einige Herausforderungen weg, wie zum Beispiel:
 - Wie wird der Wasserverbrauch berechnet? Welche Faktoren können/sollen einbezogen werden?
 - Der enorme Aufwand der manuellen Datenerfassung durch den Nutzer und dessen Fehleranfälligkeit (Pflanzendaten, Wann wurde wieviel gegossen uvm.)
-- HTML und CSS sollten nicht unterschätzt werden, anstrengend wieder reinzukommen
-- Kommunikation untereinander (Probleme entstanden durch Missverständnisse)
 
 
 Jedoch ergeben sich unter Anderem auch neue Hürden:
