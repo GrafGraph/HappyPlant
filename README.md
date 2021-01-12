@@ -1,6 +1,7 @@
 # HappyPlant
 HappyPlant ist ein Prototyp für ein web-basiertes Überwachungs-Dashboard für vom Nutzer angelegte Pflanzen. 
 Es sollen Verbrauchstatistiken und der aktuelle Feuchtigkeits-Status der Pflanzen angezeigt werden.
+[HappyPlant](https://happyplant1.herokuapp.com/)
 
 ## Prototyp
 ### Zielstellung
@@ -215,24 +216,6 @@ Zukünftig interessant:
 - Nährstoffwerte (Sensor)
 - Wasserbedarf für Prognosen (Berechnet sich aus Historie und ggfs Wetterbericht(Standort) - Sensor)
 
-## Stakeholder und deren Anforderungen: 
-- Nutzer:
-    - Immer zugreifen können
-    -> muss Ausfallssicher sein, wenn Webiste ausfällt, dann können Pflanzen sterben 
-    - Parameter der Pflanzen müssen korrekt sein 
-    -> Wenn Parameter nicht Korrekt sind, dann sterben die PFlanzen
-    - Wollen Benachrichirgungen haben
-    -> Ohne Benachrichtigungen können die Pflanzen sterben, weil der Nutzer es nicht mitbekommt
-    - Website muss Intuitiv sein
-    - Schöne Ansicht, dem Auge muss es gefallen
-- Admin: 
-    - Leichte wartbarkeit
-    -> Parameter für Pflanzen leicht anpassen können oder neue Pflanzen einfügen 
-- Inhaber: 
-    - Möglichst viel Gewinn erzielen 
-    - Zufriedenheit der Kunden
-    - Selbst Nutzen von der App haben 
-    
 ## Projektrahmen
 HappyPlant entsteht im Rahmen des Bachelor-IT-Projekts von Anton Bespalov und Michael Hopp.
 Abgegeben wird es bis zum 28.02.2021 beim Prüfer Prof. Avemarg an der Fachhochschule Erfurt.
