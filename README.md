@@ -62,34 +62,34 @@ Grafiktools, das als IFrame in das generierte HTML eingebunden wird, visualisier
 bedarf allerdings eines Servers und einer Lizenz. Für den Prototypen und auch erste Versionen des Systems reicht es, die Daten mit zum Beispiel Chart.js zu visualisieren.
 
 ### Design
-Das folgende Screenshot zeigt die ersten Designideen für die Website HappyPlant an. Die Daten zu den Pflanzen stehen im Vordergrund
-und an der Seite werden die einzelnen Pflanzen angezeigt. 
+
+Der folgende Screenshot zeigt die ersten Designideen für die Website HappyPlant an, hierbei sollten alle Pflanzen angezeigt werden: 
+
+![HappyPlant Website Mockup](/Documentation/images/FirstMockup.PNG "HappyPlant Website Mockup")
+
+Jedoch wurde diese Idee verworfen, weil auf dem Dashboard zu wenig Informationen über die Pflanzen zu sehen war. Daraus entstand die Idee, 
+dass die Daten zu den Pflanzen im Vordergrund stehen und an der Seite von dem Browserfenster eine Liste von den Pflanzen angezeigt wird. 
+Mithilfe dieser Liste kann der Nutzer sich seine Pflanzen anzeigen lassen.  
 
 ![HappyPlant Website Mockup](/Documentation/images/HappyPlantMockup.PNG "HappyPlant Website Mockup")
 
 Der Prototyp wurde anhand dieser Designidee entwickelt. Die Farbe des Headers wurde geändert, damit ein lebhafterer und freundlicher 
-Eindruck geschaffen wird:
+Eindruck geschaffen wird. Außerdem wurde die Liste von den Pflanzen auf die Linke Seite verschoben, weil Menüführungen häufig auf der linken Seite ist
+und es intuitiver für den Nutzer ist. Weterhin wurde der Button zum Einfügen einer neuen Pflanze nach oben verschoben damit der Nutzer nicht runter scrollen muss, 
+wenn zu viele Pflanzen angelegt wurden. 
 
 ![HappyPlant Website](/Documentation/images/Prototype.PNG "HappyPlant Website")
 
+Momentan ist auf der Website ein Dummybild für die Sonnenaktivität. Das Bild ist nicht passend für Pflanzen. 
 Bei dem Entwickeln der Website sind Herausforderungen, bezüglich des Moisture Diagrammes, entstanden. Das Moisture Diagramm 
 hat sich komisch verhalten, unter anderem wurden die Größen unterschiedlich verändert. Dadurch entstand das Problem, dass 
 das Moisture Diagramm bei einigen Größen von dem Browserfenster nicht gut aussieht. Es kann passieren, dass entweder das Moisture Diagramm 
 aus der Box herausragt oder es zu klein für die Box wird. 
 
-### Weiterentwicklung des Prototypen
-Da dies erst ein Prototyp ist, sind auf der Website momentan nicht viele Funktionen vorhanden. Zu den nächsten Schritten 
-gehört die Implementierung der Funktionen. Unter anderem müssen die Funktionen der einzelnen Buttons implementiert werden
-Weiterhin muss eine extra View erstellt werden zum erstellen einer Pflanze. Momentan werden auf der Website nur Dummydaten 
-verwendet. Die verbindung zu der Datenbank funktioniert, jedoch werden keine Daten in die Datenbank gespeichert und auch 
-keine Daten von der Datenbank bezogen. Somit ist einer der nächsten Schritte die Datenbank zu benutzen. 
-Weiterhin könnte möglicherweise das Design verändert werden. 
- 
-
 ### Nutzerakzeptanz
 HappyPlant wird höchstwahrscheinlich anfangs sehr skeptisch betrachtet werden. Einige Nutzer könnten das Dashboard als 
 nutzlos einschätzen und es nicht nutzen. Viele altmodische und traditionelle Menschen werden es somit
-nicht Nutzen. Jedoch gibt es inzwischen modernere Generationen, die die selben Interessen verfolgen und deutlich 
+nicht Nutzen. Jedoch gibt es inzwischen modernere Generationen, die an Pflanzen interessiert sind und deutlich 
 vertrauter mit der modernen Technik sind. Das Projekt wird wahrschienlich von Freunden des SmartHomes zuspruch erhalten. 
 Besonders der Aspekt, dass Leute heutzutage deutlich weniger Zeit haben, garantiert beinahe eine hohe Nutzerakzeptanz. 
 Die Nutzer des Dashboards müssen nicht mehr vor die Tür gehen um zu wissen ob ihre Pflanzen genug Wasser haben. 
@@ -149,7 +149,11 @@ Der Umfang des Prototyps könnte folgendermaßen erweitert werden:
 - Tool zur Erstellung neuer Pflanzen/Töpfe einbinden, sodass der Nutzer nur noch ein Portal bedienen muss
 - Automatisierte Bewässerung
 - Weitere Sensoren einbinden: Sonnenlicht, Temperatur, Nährstoffe / Minerale (Paprikapflanzen benötigen zB. extra Kalzium, sonst bilden sich braune Stellen an den Früchten)
-
+- Funktionen der einzelnen Buttons
+- Extra Seite für die Erstellung einer neuen Pflanze
+- Verwendung der Datenbank
+- Designveränderungen
+ 
 
 ## Umsetzung
 ### Generierung der Testdaten
