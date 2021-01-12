@@ -76,17 +76,17 @@ Mithilfe dieser Liste kann der Nutzer sich seine Pflanzen anzeigen lassen.
 ![HappyPlant Website Mockup](/Documentation/images/HappyPlantMockup.PNG "HappyPlant Website Mockup")
 
 Der Prototyp wurde anhand dieser Designidee entwickelt. Die Farbe des Headers wurde geändert, damit ein lebhafterer und freundlicher 
-Eindruck geschaffen wird. Außerdem wurde die Liste von den Pflanzen auf die Linke Seite verschoben, weil Menüführungen häufig auf der linken Seite ist
+Eindruck geschaffen wird. Außerdem wurde die Liste von den Pflanzen auf die Linke Seite verschoben, weil Menüführungen häufig auf der linken Seite angesiedelt sind
 und es intuitiver für den Nutzer ist. Weterhin wurde der Button zum Einfügen einer neuen Pflanze nach oben verschoben damit der Nutzer nicht runter scrollen muss, 
 wenn zu viele Pflanzen angelegt wurden. 
 
 ![HappyPlant Website](/Documentation/images/Prototype.PNG "HappyPlant Website")
 
-Momentan ist auf der Website ein Dummybild für die Sonnenaktivität. Das Bild ist nicht passend für Pflanzen. 
-Bei dem Entwickeln der Website sind Herausforderungen, bezüglich des Moisture Diagrammes, entstanden. Das Moisture Diagramm 
-hat sich komisch verhalten, unter anderem wurden die Größen unterschiedlich verändert. Dadurch entstand das Problem, dass 
-das Moisture Diagramm bei einigen Größen von dem Browserfenster nicht gut aussieht. Es kann passieren, dass entweder das Moisture Diagramm 
-aus der Box herausragt oder es zu klein für die Box wird. 
+Momentan ist auf der Website ein Dummybild für die Sonnenaktivität eingefügt. Das Bild dient nur als Platzhalter und ist nicht passend für Pflanzen. 
+Bei dem Entwickeln der Website sind Herausforderungen bezüglich des Moisture Diagrammes entstanden. Das Moisture Diagramm 
+hat sich komisch verhalten: Unter anderem wurden die Größen unterschiedlich verändert. Dadurch entstand das Problem, dass 
+das Moisture Diagramm bei einigen Größen von dem Browserfenster nicht gut aussieht: Es kann passieren, dass entweder das Moisture Diagramm 
+aus der Box herausragt oder es zu klein für die Box wird. Ein Neuladen der Seite stimmt beide Elemente wieder aufeinander ab.
 
 ### Nutzerakzeptanz
 HappyPlant wird höchstwahrscheinlich anfangs sehr skeptisch betrachtet werden. Einige Nutzer könnten das Dashboard als 
