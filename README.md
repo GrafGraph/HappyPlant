@@ -63,7 +63,14 @@ bedarf allerdings eines Servers und einer Lizenz. Für den Prototypen und auch e
 
 ### Design
 ![HappyPlant Website Mockup](/Documentation/images/HappyPlantMockup.PNG "HappyPlant Website Mockup")
-
+### Weiterentwicklung des Prototypen
+Da dies erst ein Prototyp ist, sind auf der Website momentan nicht viele Funktionen vorhanden. Zu den nächsten Schritten 
+gehört die Implementierung der Funktionen. Unter anderem müssen die Funktionen der einzelnen Buttons implementiert werden
+Weiterhin muss eine extra View erstellt werden zum erstellen einer Pflanze. Momentan werden auf der Website nur Dummydaten 
+verwendet. Die verbindung zu der Datenbank funktioniert, jedoch werden keine Daten in die Datenbank gespeichert und auch 
+keine Daten von der Datenbank bezogen. Somit ist einer der nächsten Schritte die Datenbank zu benutzen. 
+Weiterhin könnte möglicherweise das Design verändert werden. 
+ 
 
 ### Nutzerakzeptanz
 HappyPlant wird höchstwahrscheinlich anfangs sehr skeptisch betrachtet werden. Einige Nutzer könnten das Dashboard als 
@@ -77,6 +84,9 @@ Die Nutzer des Dashboards müssen nicht mehr vor die Tür gehen um zu wissen ob 
 Durch den Einsatz von Sensorik fallen bereits einige Herausforderungen weg, wie zum Beispiel:
 - Wie wird der Wasserverbrauch berechnet? Welche Faktoren können/sollen einbezogen werden?
 - Der enorme Aufwand der manuellen Datenerfassung durch den Nutzer und dessen Fehleranfälligkeit (Pflanzendaten, Wann wurde wieviel gegossen uvm.)
+- HTML und CSS sollten nicht unterschätzt werden, anstrengend wieder reinzukommen
+- Kommunikation untereinander (Probleme entstanden durch Missverständnisse)
+
 
 Jedoch ergeben sich unter Anderem auch neue Hürden:
 
