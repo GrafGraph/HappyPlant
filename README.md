@@ -2,11 +2,11 @@
 HappyPlant ist ein Prototyp für ein web-basiertes Überwachungs-Dashboard für vom Nutzer angelegte Pflanzen. 
 Es sollen Verbrauchstatistiken und der aktuelle Feuchtigkeits-Status der Pflanzen angezeigt werden. 
 
-Zur Website: [HappyPlant](https://happyplant1.herokuapp.com/)
+Zur Website: [HappyPlant Dashboard](https://happyplant1.herokuapp.com/)
 
 ## Prototyp
 ### Zielstellung
-Im Fokus steht die Klärung der Fragen zur Nutzerakzeptanz: Wie nützlich ist dieses System? 
+Klärung der Fragen zur Nutzerakzeptanz: Wie nützlich ist dieses System? 
 Wie ist es ästhetisch und intuitiv darstellbar und welche Herausforderungen entstehen dabei?
 Dazu soll die Darstellung der Daten für den Nutzer als Dashboard erprobt werden.
 
@@ -55,7 +55,7 @@ Auf diesem System zur Datenbeschaffung soll unser System aufbauen, wobei die Fes
 ### Architektur
 ![HappyPlant Deployment Diagramm](/Documentation/images/DeploymentDiagramm.png "HappyPlant Deployment Diagramm")
 
-Den Kern des Systems stellt der Heroku Server dar, auf dem die Java-Anwendung und die Domaindatenbank laufen, sowie die Website gehostet wird.
+Den Kern des Systems stellt der Heroku Server dar, auf dem die Java-Anwendung und die Domaindatenbank laufen sowie die Website gehostet wird.
 Die Schnittstelle zwischen der Hardware des Pflanzentopfes und unserem System bildet die Sensordatenbank, die auf einem Cloud-Server 
 läuft und mit den Daten des Feuchtigkeitssensors angereichert wird. Bei der Nutzerabfrage zum Status einer Pflanze lädt 
 die Java Anwendung - im Sinne von Polyglot Persistence - die Daten zu dem Pflanzenobjekt (Grenzwert, Gruppierung, o.Ä.) aus
@@ -160,18 +160,20 @@ Der Umfang des Prototyps könnte folgendermaßen erweitert werden:
 ## Umsetzung
 ### Generierung der Testdaten
 Ziel war es hierbei, Daten zu erzeugen, die im Sinn und Format den Echten aus der Sensordatenbank entsprechen:
+
 ![Ausschnitt findAll statement](/Documentation/images/DatenFormatSensor.jpeg "Ausschnitt findAll statement")
 
 Um die Funktionalität der Erzeugung vom eigentlichen System zu trennen, wurde dafür die Helper Klasse DataFaker erstellt.
 Für den Prototypen hätte ein klarer Testfall genügt, jedoch wurde durch den Einsatz von Random-Bereichen die Möglichkeit geschaffen das Verhalten unterschiedlicher
 Pflanzen zu simulieren (Jedes Neuladen entspricht einem einzigartigen Graphen!). Dabei wird ein Grenzwert, ab dem gegossen werden muss, übergeben und standardmäßig eine Historie über ein Zeitfenster von 7 Tagen konstruiert.
-Der durchschnittliche Wasserverbrauch orientiert sich so, dass die Pflanze ihre Reserven zwischen einem oder sechs Tagen aufbraucht und gegossen werden muss, allerdings verläuft
+Der durchschnittliche Wasserverbrauch orientiert sich so, dass die Pflanze ihre Reserven zwischen einem oder sechs Tagen aufbraucht und gegossen werden muss. Allerdings verläuft
 dieser Verbrauch nicht geradlinig, denn je nach Gegebenheit des Umfelds (Sonnenlicht, Temperatur) verbraucht die Pflanze mal mehr oder mal weniger als den Normalwert.
 Der Feuchtigkeitsbereich in dem die Pflanze lebt reicht von definierten 10% bis 25% über dem Grenzwert. Genau diese Ausgangsfeuchtigkeit wird beim Gießen wieder hergestellt.
 Es ist unrealistisch, dass ein menschlicher Gärtner jedes mal exakt die selbe Menge gießt, aber in Anbetracht des Ziels der vollständigen Automatisierung des Pflanzentopfes,
 wird davon ausgegangen, dass die Wasserversorgung automatisiert stattfindet, wobei diese Regelmäßigkeit gegeben ist. 
 Deshalb wird auch sofort beim Unterschreiten des Grenzwertes gegossen.
 So sähe jedoch ein Graph aus, bei dem die Gießmenge variabel ist:
+
 ![Feuchtigkeitsgraph mit variabler Gießmenge](/Documentation/images/IrregularWateringGraph.PNG "Feuchtigkeitsgraph mit variabler Gießmenge")
 
 Ein Gärtner wird auf normalem Wege den Status seiner Pflanzen etwa 1-6 mal pro Tag prüfen. Der Feuchtigkeitssensor im Pflanzentopf sendet seine Ergebnisse alle paar Sekunden.
@@ -193,9 +195,9 @@ Für kleinere Anwendungen, mit weniger Datenpunkten und geringeren Anforderungen
 Chart.js ist dabei der wohl namhafteste Vertreter. Dabei handelt es sich um eine starke Bibliothek, durch die mit relativ einfachem Aufwand
 bereits ansehnliche Ergebnisse erzeugt werden können: Grundlegende Animationen, Legenden und eine sinnvolle Gruppierung der Achsen-Labels sind sofort aktiv.
 
-Per CDN Link eingebunden, kann dadurch ein HTML Canvas Element befüllt werden. Das Canvas Element selbst ist nicht *responsive* doch lässt sich durch das Containerelement 
+Per CDN Link eingebunden, kann dadurch ein HTML Canvas Element befüllt werden. Das Canvas Element selbst ist nicht *responsive* doch lässt es sich durch das Containerelement (Div)
 formatieren und an dessen Eigenschaften anpassen, sodass es *responsive* wird. Dem Script zur Erstellung des Graphen wird dann ein Typ (Line), die Labels der Achsen
-und die Datensätze **als String-Arrays**, sowie styling Optionen übergeben. Zur Übergabe der Variablen kann im Javascript auch Thymeleaf dereferenziert werden.
+und die Datensätze **als String-Arrays** sowie styling Optionen übergeben. Zur Übergabe der Variablen kann im Javascript auch Thymeleaf dereferenziert werden.
 
 Als Besonderheit stellte sich heraus, dass zur Erzeugung der horizontalen Linie des Grenzwertes ein genauso großes Array wie das der Messwerte übergeben werden musste,
 in dem immer derselbe Wert steht. Damit die Linie glatt ist, wurden die Punkte unsichtbar gemacht. Dadurch, dass die Grenzwerte pro Messwert dargestellt werden, 
@@ -222,7 +224,7 @@ HappyPlant entsteht im Rahmen des Bachelor-IT-Projekts von Anton Bespalov und Mi
 Abgegeben wird es bis zum 28.02.2021 beim Prüfer Prof. Avemarg an der Fachhochschule Erfurt.
 Der geplante Zeitaufwand für die Prüfungsleistung beträgt pro Prüfling 75 Stunden (3CP).
 
-Der Projektauftrag teilt sich zum einen in die Klärung der Forschungsfragen: Entwurf einer Architektur, Aufbau auf und Umgang mit Sensordaten (Testdatenerzeugung)
+Der Projektauftrag teilt sich zum einen in die Klärung der Forschungsfragen: Entwurf einer Architektur, Aufbau auf- und Umgang mit Sensordaten (Testdatenerzeugung)
 sowie das Aufzeigen von Möglichkeiten und Herausforderungen des Systems. Zum anderen soll das System als Website greifbar gemacht werden, um die Funktionalitäten
 und die Nutzerakzeptanz zu erproben.
 
@@ -235,7 +237,7 @@ und die Nutzerakzeptanz zu erproben.
 #### Software
 - GitHub als Versionskontrollsystem und für das Projektmanagement
 - Heroku Server für das Deployment (App, DB, Website)
-- Java Spring MVC (IDE: IntelliJ IDEA)
+- Java Spring MVC (Javaversion: 11.0.9; IDE: IntelliJ IDEA)
 - Wix.com für Design-Mockups
 - LucidChart für Diagramme
 - (PostgreSQL für die Domaindatenbank)
@@ -248,6 +250,7 @@ und die Nutzerakzeptanz zu erproben.
 Auf dem *main*-Branch soll stets eine releasefähige Version laufen. Für Features und Fixes werden Branches abgespaltet, die nach
 erfolgreicher Implementierung wieder auf *main* zurückgeführt werden. Dabei ist darauf zu achten, dass die Differenz der Versionen
 durch regelmäßige Pulls nicht zu groß wird.
+
 ![Branch FLow](/Documentation/images/BranchFlow.png "Branch FLow")
 
 ##### HowTo-Branch-Mergen:
